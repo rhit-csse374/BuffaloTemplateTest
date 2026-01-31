@@ -30,9 +30,37 @@ class MenuItem  {
 	+getDescription(): String
 	+getPrice(): double
 	+isVegetarian(): boolean
+	+toString() : String
 	+print(): void
 	+accept(visitor: Visitor): void
 }
+
+class MenuItemWithSizes {
+        -name : String
+        -description : String
+        -size: MenuItemSize
+        -price : double
+
+        +MenuItemWithSizes(name : String, description : String, size: MenuSize, price : double)
+        +getName() : String
+        +getDescription() : String
+         +getSize(): MenuSize
+        +getPrice() : double
+		+toString() : String
+        +print() : void
+		+accept(visitor: Visitor): void
+    }
+
+enum MenuItemSize {
+        SMALL
+        MEDIUM
+        LARGE
+        --
+        -printName : String
+        --
+        +toString() : String
+        +fromString(text : String) : MenuItemSize
+    }
 
 class Waitress  {
 	-allMenus: MenuComponent
@@ -54,24 +82,29 @@ abstract class MenuComponent  {
 }
 
 class VegetarianVisitor {
-	-vegetarianItems: List<MenuItem>
+	-vegetarianItems: List<MenuComponent>
 	
 	+VegetarianVisitor()
-	+getVegetarianItems(): List<MenuItem>
+	+getVegetarianItems(): List<MenuComponent>
 	+visit(menu: Menu): void
 	+visit(menuItem: MenuItem): void
+	+visit(menuItemWithSizes: MenuItemWithSizes): void
 }
 
 interface Visitor  {
 	visit(menu: Menu): void
 	visit(menuItem: MenuItem): void
+	visit(menuItemWithSizes: MenuItemWithSizes): void
 }
 
+
+MenuItemWithSizes --> MenuItemSize
 Menu --> "*" MenuComponent 
 MenuComponent <|-- Menu
 MenuComponent <|-- MenuItem
+MenuComponent <|-- MenuItemWithSizes
 Waitress --> MenuComponent
-VegetarianVisitor --> "*" MenuItem
+VegetarianVisitor --> "*" MenuComponent
 Visitor <|.. VegetarianVisitor
 
 MenuTestDrive ..> MenuComponent : allMenus

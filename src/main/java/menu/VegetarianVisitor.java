@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VegetarianVisitor implements Visitor {
-    private List<MenuItem> vegetarianItems;
+    private List<MenuComponent> vegetarianItems;
 
     public VegetarianVisitor() {
         this.vegetarianItems = new ArrayList<>();
     }
 
-    public List<MenuItem> getVegetarianItems() {
+    public List<MenuComponent> getVegetarianItems() {
         return this.vegetarianItems;
     }
 
@@ -24,5 +24,11 @@ public class VegetarianVisitor implements Visitor {
         if (menuItem.isVegetarian()) {
             this.vegetarianItems.add(menuItem);
         }
+    }
+    
+    @Override
+    public void visit(MenuItemWithSizes menuItemWithSizes) {
+        // Assuming MenuItemWithSizes are all vegetarian for this example
+        this.vegetarianItems.add(menuItemWithSizes);
     }
 }

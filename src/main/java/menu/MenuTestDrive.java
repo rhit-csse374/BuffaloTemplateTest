@@ -41,11 +41,21 @@ public class MenuTestDrive {
 			true,
 			3.59));
 
-		dinerMenu.add(new MenuItem(
+		dinerMenu.add(new MenuItemWithSizes(
 			"Vegetarian BLT",
 			"(Fakin') Bacon with lettuce & tomato on whole wheat", 
-			true, 
+				MenuItemSize.SMALL,
 			2.99));
+		dinerMenu.add(new MenuItemWithSizes(
+			"Vegetarian BLT",
+			"(Fakin') Bacon with lettuce & tomato on whole wheat", 
+			MenuItemSize.MEDIUM,
+			3.49));
+		dinerMenu.add(new MenuItemWithSizes(
+			"Vegetarian BLT",
+			"(Fakin') Bacon with lettuce & tomato on whole wheat", 
+			MenuItemSize.LARGE,
+			3.99));
 		dinerMenu.add(new MenuItem(
 			"BLT",
 			"Bacon with lettuce & tomato on whole wheat", 
@@ -140,14 +150,10 @@ public class MenuTestDrive {
 		System.out.println();
         System.out.println("Vegetarian Menu Items:");
         System.out.println("----------------------");
-		List<MenuItem> vegetarianItems = vegetarianVisitor.getVegetarianItems();
-        for (MenuItem item : vegetarianItems) {
-			System.out.print("  " + item.getName());
-			if (item.isVegetarian()) {
-			System.out.print("(v)");
+		List<MenuComponent> vegetarianItems = vegetarianVisitor.getVegetarianItems();
+        for (MenuComponent item : vegetarianItems) {
+			System.out.println(item.toString());
 		}
-		System.out.println(", " + item.getPrice());
-		System.out.println("     -- " + item.getDescription());
-        }
+		
 	}
 }
