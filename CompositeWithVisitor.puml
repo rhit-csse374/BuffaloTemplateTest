@@ -71,7 +71,7 @@ Menu --> "*" MenuComponent
 MenuComponent <|-- Menu
 MenuComponent <|-- MenuItem
 Waitress --> MenuComponent
-VegetarianVisitor --> "*" MenuItem : vegetarianItems
+VegetarianVisitor --> "*" MenuItem
 Visitor <|.. VegetarianVisitor
 
 MenuTestDrive ..> MenuComponent : allMenus
