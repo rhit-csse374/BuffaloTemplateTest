@@ -30,7 +30,6 @@ class MenuItem  {
 	+getDescription(): String
 	+getPrice(): double
 	+isVegetarian(): boolean
-	+toString() : String
 	+print(): void
 	+accept(visitor: Visitor): void
 }
@@ -46,7 +45,6 @@ class MenuItemWithSizes {
         +getDescription() : String
          +getSize(): MenuSize
         +getPrice() : double
-		+toString() : String
         +print() : void
 		+accept(visitor: Visitor): void
     }

@@ -31,16 +31,11 @@ public class MenuItemWithSizes extends MenuComponent {
     public MenuItemSize getSize() {
         return size;
     }
-
-    @Override
-	public String toString() {
-		return "  " + getName() 
-		+ ", " + getSize() + ": $" + getPrice()
-		+ "\n" + "     -- " + getDescription();
-	}
   
     public void print() {
-        System.out.println(this.toString());
+        System.out.println("  " + getName() 
+            + ", " + getSize() + ": $" + getPrice()
+            + "\n" + "     -- " + getDescription());
     }
 
     @Override

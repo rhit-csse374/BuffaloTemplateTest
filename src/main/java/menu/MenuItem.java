@@ -31,17 +31,12 @@ public class MenuItem extends MenuComponent {
 	public boolean isVegetarian() {
 		return vegetarian;
 	}
-  
-	@Override
-	public String toString() {
-		return "  " + getName() +
-		(this.isVegetarian() ? "(v)" : "") + ", "  
-		+ getPrice()
-		+ "\n" + "     -- " + getDescription();
-	}
 
 	public void print() {
-		System.out.println(this.toString());
+		System.out.println("  " + getName() +
+			(this.isVegetarian() ? "(v)" : "") + ", "  
+			+ getPrice()
+			+ "\n" + "     -- " + getDescription());
 	}
 
 	@Override

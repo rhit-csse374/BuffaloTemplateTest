@@ -152,7 +152,7 @@ public class MenuTestDrive {
         System.out.println("----------------------");
 		List<MenuComponent> vegetarianItems = vegetarianVisitor.getVegetarianItems();
         for (MenuComponent item : vegetarianItems) {
-			System.out.println(item.toString());
+			item.print();
 		}
 		
 	}
