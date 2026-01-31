@@ -1,5 +1,5 @@
 package menu;
-public abstract class MenuComponent {
+public abstract class MenuComponent  {
    
 	public void add(MenuComponent menuComponent) {
 		throw new UnsupportedOperationException();
@@ -7,7 +7,7 @@ public abstract class MenuComponent {
 	public void remove(MenuComponent menuComponent) {
 		throw new UnsupportedOperationException();
 	}
-	public MenuComponent getChild(int i) {
+	public MenuComponent getChild(int k) {
 		throw new UnsupportedOperationException();
 	}
   

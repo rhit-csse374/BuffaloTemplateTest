@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VegetarianVisitor implements Visitor {
-    private ArrayList<MenuItem> vegetarianItems = new ArrayList<>();
+    private List<MenuItem> vegetarianItems;
+
+    public VegetarianVisitor() {
+        this.vegetarianItems = new ArrayList<>();
+    }
 
     public List<MenuItem> getVegetarianItems() {
-        return vegetarianItems;
+        return this.vegetarianItems;
     }
 
     @Override
@@ -18,7 +22,7 @@ public class VegetarianVisitor implements Visitor {
     @Override
     public void visit(MenuItem menuItem) {
         if (menuItem.isVegetarian()) {
-            vegetarianItems.add(menuItem);
+            this.vegetarianItems.add(menuItem);
         }
     }
 }

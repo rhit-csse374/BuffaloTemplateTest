@@ -1,0 +1,78 @@
+@startuml
+hide empty members
+
+class Menu  {
+	-name: String
+	-description: String
+	-menuComponents: List<MenuComponent>
+
+	+Menu(name: String, description: String)
+	+add(menuComponent: MenuComponent): void
+	+remove(menuComponent: MenuComponent): void
+	+getChild(k: int): MenuComponent
+	+getName(): String
+	+getDescription(): String
+	+print(): void
+	+accept(visitor: Visitor): void
+}
+
+class MenuItem  {
+	-name: String
+	-description: String
+	-vegetarian: boolean
+	-price: double
+	+MenuItem(name: String, description: String, vegetarian: boolean, price: double)
+	+getName(): String
+	+getDescription(): String
+	+getPrice(): double
+	+isVegetarian(): boolean
+	+print(): void
+	+accept(visitor: Visitor): void
+}
+
+class Waitress  {
+	-allMenus: MenuComponent
+
+	+Waitress(allMenus: MenuComponent)
+	+printMenu(): void
+}
+
+abstract class MenuComponent  {
+	+add(menuComponent: MenuComponent): void
+	+remove(menuComponent: MenuComponent): void
+	+getChild(k: int): MenuComponent
+	+getName(): String
+	+getDescription(): String
+	+getPrice(): double
+	+isVegetarian(): boolean
+	+print(): void
+	+{abstract} accept(visitor: Visitor): void
+}
+class MenuTestDrive {
+	+{static} main(args: String[]): void
+}
+class VegetarianVisitor {
+	-vegetarianItems: List<MenuItem>
+	
+	+VegetarianVisitor()
+	+getVegetarianItems(): List<MenuItem>
+	+visit(menu: Menu): void
+	+visit(menuItem: MenuItem): void
+}
+
+interface Visitor  {
+	visit(menu: Menu): void
+	visit(menuItem: MenuItem): void
+}
+
+Menu --> "*" MenuComponent 
+MenuComponent <|-- Menu
+MenuComponent <|-- MenuItem
+Waitress --> MenuComponent
+VegetarianVisitor --> "*" MenuItem : vegetarianItems
+Visitor <|.. VegetarianVisitor
+
+MenuTestDrive ..> MenuComponent : allMenus
+MenuTestDrive ..> Waitress : waitress
+MenuTestDrive ..> VegetarianVisitor 
+@enduml
