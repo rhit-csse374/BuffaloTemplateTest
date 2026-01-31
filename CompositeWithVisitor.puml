@@ -1,6 +1,10 @@
 @startuml
 hide empty members
 
+class MenuTestDrive {
+	+{static} main(args: String[]): void
+}
+
 class Menu  {
 	-name: String
 	-description: String
@@ -48,9 +52,7 @@ abstract class MenuComponent  {
 	+print(): void
 	+{abstract} accept(visitor: Visitor): void
 }
-class MenuTestDrive {
-	+{static} main(args: String[]): void
-}
+
 class VegetarianVisitor {
 	-vegetarianItems: List<MenuItem>
 	
